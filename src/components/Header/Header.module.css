@@ -1,0 +1,14 @@
+
+
+.header {
+    grid-area: header;
+    background-color: cornflowerblue;
+
+}
+
+
+.img {
+    width: 60px;
+}
+
+

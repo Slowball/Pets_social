@@ -1,0 +1,13 @@
+.item {
+    color: greenyellow;
+    padding: 20px;
+}
+
+.img {
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    padding: 2px;
+
+
+}
