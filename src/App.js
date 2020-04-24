@@ -19,8 +19,8 @@ function App(props) {
             <Menu />
             <div className='app-wrapper-content'>
 
-            <Route path='/profile' render={() => <Main postsElements={props.postsElements}/>}/>
-            <Route exact path='/messages' render={() => <Dialogs dialogsElements={props.dialogsElements} messageElements={props.messageElements} />} />
+            <Route path='/profile' render={() => <Main posts={props.posts}/>}/>
+            <Route exact path='/messages' render={() => <Dialogs dialogs={props.dialogs} messages={props.messages} />} />
             <Route path='/news' render={() => <News news={props.news} /> } />
             <Route path='/music' render={() => <Music/>} />
             <Route path='/settings' render={() => <Settings settings={props.settings}/>} />

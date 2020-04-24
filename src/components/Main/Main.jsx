@@ -6,6 +6,8 @@ import Post from "./My_posts/Postss/Post";
 
 
 function Main (props) {
+    let postsElements = props.posts
+        .map(posts => <Post message={posts.message} likes={posts.likes} /> );
 
     return (
 
@@ -13,7 +15,7 @@ function Main (props) {
         <div className={m.main}>
             <ProfileInfo/>
             <MyPosts/>
-            {props.postsElements}
+            {postsElements}
         </div>
 
     )

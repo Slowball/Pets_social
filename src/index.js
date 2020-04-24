@@ -17,11 +17,7 @@ let posts = [
     {id: 1, message: 'U kudding me? i kill u, fucking cat1', likes: '-1'},
 ];
 
-let postsElements = posts
-    .map(posts => <Post message={posts.message} likes={posts.likes} /> );
-
 let news = <News news={'sasi chlen'} />;
-
 
 let dialogs = [
     {id: 1, name: 'Old dog'},
@@ -32,23 +28,19 @@ let dialogs = [
     {id: 6, name: 'Old dog'},
 ];
 
-let dialogsElements = dialogs
-    .map( dialog => ( <DialogsItem name={dialog.name} id={dialog.id} />));
-
 let messages = [
     {id: 1, message: 'good luck fuking bad ass'},
     {id: 2, message: 'FUkerrad2122'},
     {id: 3, message: 'u see this?'},
 ];
 
-let messageElements = messages
-    .map(message => <Messages name={'sisi'} message={message.message}/>)
+
 
 
 ReactDOM.render(
     <React.StrictMode>
-    <App settings={set} postsElements={postsElements} news={news}
-         dialogsElements={dialogsElements} messageElements={messageElements} />
+    <App settings={set} posts={posts} news={news}
+         dialogs={dialogs} messages={messages} />
   </React.StrictMode>,
   document.getElementById('root')
 );
