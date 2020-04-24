@@ -1,17 +1,13 @@
 import React from 'react';
-import m from '../Dialogs.module.css';
+import m from '../Menu.module.css';
 import {NavLink} from "react-router-dom";
 
-let DialogsItem = (props) => {
-
+let Friends = (props) => {
     let path = '/dialogs/' + props.id;
     return (
-        <div className={m.dialog}>
-            <img src={props.url} className={m.img} />
+        <div className={m.friends}>
             <NavLink to={path}> {props.name} </NavLink>
         </div>
     )
 }
-
-
-export default DialogsItem;
+export default Friends;

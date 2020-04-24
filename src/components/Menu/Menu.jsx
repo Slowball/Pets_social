@@ -1,27 +1,34 @@
 import React from 'react';
 import m from './Menu.module.css';
-import {NavLink} from "react-router-dom";
+import Friends from "./Friends/Friends";
 
 
-function Menu () {
+function Menu (props) {
+
+    let friend = props.menu.friends.friendsName
+        .map(e => <Friends name={e.name} id={e.id} />);
+
+
     return (
 
         <nav className={m.nav}>
             <div>
-                <NavLink to='/profile' activeClassName={m.active}>Profile</NavLink>
+                {props.menu.menu.profile}
             </div>
             <div>
-                <NavLink to='/messages' activeClassName={m.active}>Messages</NavLink>
+                {props.menu.menu.messages}
             </div>
             <div>
-                <NavLink to='/news' activeClassName={m.active}>News</NavLink>
+                {props.menu.menu.news}
             </div>
             <div>
-                <NavLink to='/music' activeClassName={m.active}>Music</NavLink>
+                {props.menu.menu.music}
             </div>
             <div>
-                <NavLink to='/settings' activeClassName={m.active}>Settings</NavLink>
+                {props.menu.menu.settings}
+                {friend}
             </div>
+
 
         </nav>
         
