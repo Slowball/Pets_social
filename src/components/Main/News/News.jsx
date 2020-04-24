@@ -4,7 +4,8 @@ import m from './News.module.css';
 function News (props) {
     return (
             <div className={m.item}>
-               sosaut
+                {props.news}
+
             </div>
     )
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import m from './Settings.module.css';
 
-function Settings (props) {
+function Settings(props) {
     return (
-            <div className={m.item}>
-               tut setingi
-            </div>
+        <div className={m.item}>
+            {props.settings}
+        </div>
     )
 }
+
 export default Settings;
