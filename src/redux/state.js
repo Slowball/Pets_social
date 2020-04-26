@@ -3,7 +3,13 @@ import News from "../components/Main/News/News";
 import React from "react";
 import m from "../components/Menu/Menu.module.css";
 import {NavLink} from "react-router-dom";
-import {renderEnterTree} from "../render";
+
+let store = {
+    
+}
+let renderEnterTree = () => {
+    console.log("fuck");
+};
 
 let state = {
 
@@ -33,6 +39,7 @@ let state = {
             {id: 2, message: 'FUkerrad2122'},
             {id: 3, message: 'u see this?'},
         ],
+        newMessages: 'tu pidor',
     },
     menu: {
         profile: <NavLink to='/profile' activeClassName={m.active}>Profile</NavLink>,
@@ -49,6 +56,8 @@ let state = {
         {id: 3, name: "Pidor", url: 'https://www.animaladdicts.net/wp-content/uploads/2016/08/Animal-world-is-by-far-the-funniest-world-Funny-animal-compilation-265x180.jpg'},
     ] },
 };
+
+window.state = state;
 
 export let newPost = () => {
 
@@ -68,5 +77,23 @@ export let addNewPostText = (newText) => {
     renderEnterTree(state);
 };
 
+export let newMessage = () => {
+    let message = {
+        id: 4,
+        message : state.dialogsPage.newMessages,
+    };
+    state.dialogsPage.messages.push(message);
+    state.dialogsPage.newMessages = '';
+    renderEnterTree(state);
+};
+
+export let addNewMessageText = (newText) => {
+    state.dialogsPage.newMessages = newText;
+    renderEnterTree(state);
+};
+
+export const subscribe = (observer) => {
+    renderEnterTree = observer;
+}
 
 export default state;
