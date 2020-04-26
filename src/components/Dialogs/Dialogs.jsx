@@ -8,7 +8,7 @@ let Dialogs = (props) => {
     let dialogsElements = props.dialogsPage.dialogs
         .map( dialog => ( <DialogsItem name={dialog.name} id={dialog.id} url={dialog.url}/>));
     let messageElements = props.dialogsPage.messages
-        .map(message => <Messages message={message.message}/>)
+        .map(message => <Messages message={message.message}/>);
 
     let sendMessage = React.createRef();
 

@@ -18,7 +18,7 @@ function MyPosts(props) {
     let onPostChange = () => {
         let text = createElement.current.value;
         props.addNewPostText(text);
-    }
+    };
     return (
 
         <div className={m.item}>

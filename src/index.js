@@ -1,28 +1,28 @@
-import state, {subscribe} from "./redux/state";
+import store from "./redux/state";
 import React from 'react';
 import ReactDOM from  'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {addNewMessageText, addNewPostText, newMessage, newPost} from "./redux/state";
 import {BrowserRouter} from "react-router-dom";
 
 
-
-
-function renderEnterTree (state) {
+function renderEnterTree () {
     ReactDOM.render(
         <BrowserRouter>
             <React.StrictMode>
-                <App state={state} newPost={newPost} addNewPostText={addNewPostText}
-                     newMessage={newMessage} addNewMessageText={addNewMessageText}/>
+                <App store={store}
+                     newPost={store.newPost.bind(store)}
+                     addNewPostText={store.addNewPostText.bind(store)}
+                     addNewMessageText={store.addNewMessageText.bind(store)}
+                     newMessage={store.newMessage.bind(store)}/>}/>
             </React.StrictMode> </BrowserRouter>,
         document.getElementById('root')
     );
 }
 
-renderEnterTree(state);
-subscribe(renderEnterTree);
+renderEnterTree(store.getState());
+store.subscribe(renderEnterTree);
 
 
 serviceWorker.unregister();
