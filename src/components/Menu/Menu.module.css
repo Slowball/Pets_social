@@ -15,12 +15,21 @@
 }
 
 .friends {
+
+}
+
+.friend {
     display: grid;
     grid-area: div;
     background-color: red;
-    grid-template-areas:10px 20px 10px;
-    padding: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 30px 30px 30px;
+    padding: 3px;
 }
 
+.avatar {
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: cornflowerblue 5px 6px 10px;
 
-
+}

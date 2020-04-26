@@ -6,7 +6,7 @@ import Friends from "./Friends/Friends";
 function Menu (props) {
 
     let friend = props.menu.friends.friendsName
-        .map(e => <Friends name={e.name} id={e.id} />);
+        .map(e => <Friends name={e.name} id={e.id} url={e.url}/>);
 
 
     return (
@@ -26,7 +26,12 @@ function Menu (props) {
             </div>
             <div>
                 {props.menu.menu.settings}
+            </div>
+            <p>friends</p>
+            <div className={m.friend}>
+
                 {friend}
+
             </div>
 
 

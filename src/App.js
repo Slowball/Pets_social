@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Header from './components/Header/Header.jsx';
 import Menu from "./components/Menu/Menu.jsx";
 import Main from "./components/Main/Main.jsx";
@@ -14,13 +14,15 @@ import Settings from "./components/Main/Settings/Settings";
 function App(props) {
 
     return (
-        <BrowserRouter>
+
         <div className='app-wrapper'>
             <Header />
             <Menu menu={props.state} />
             <div className='app-wrapper-content'>
 
-            <Route path='/profile' render={() => <Main posts={props.state.profilePage.posts}/>}/>
+            <Route path='/profile' render={() => <Main profilePage={props.state.profilePage}
+                                                       newPost={props.newPost}
+                                                       addNewPostText={props.addNewPostText}/>}/>
             <Route exact path='/messages' render={() =>
                 <Dialogs dialogs={props.state.dialogsPage.dialogs}
                          messages={props.state.dialogsPage.messages} />} />
@@ -30,7 +32,7 @@ function App(props) {
 
             </div>
         </div>
-        </BrowserRouter>
+
 );
 }
 

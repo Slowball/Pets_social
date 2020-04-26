@@ -6,7 +6,8 @@ let Friends = (props) => {
     let path = '/dialogs/' + props.id;
     return (
         <div className={m.friends}>
-            <NavLink to={path}> {props.name} </NavLink>
+           <NavLink to={path}> {props.name} </NavLink>
+            <img src={props.url} className={m.avatar} />
         </div>
     )
 }

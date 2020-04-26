@@ -3,6 +3,7 @@ import News from "../components/Main/News/News";
 import React from "react";
 import m from "../components/Menu/Menu.module.css";
 import {NavLink} from "react-router-dom";
+import {renderEnterTree} from "../render";
 
 let state = {
 
@@ -12,6 +13,7 @@ let state = {
             {id: 1, message: 'Are you here?', likes: '-1'},
             {id: 1, message: 'U kudding me? i kill u, fucking cat1', likes: '-1'},
         ],
+        newPostText: '',
     },
     setting: <Settings settings="pizdec react"/>,
 
@@ -42,10 +44,29 @@ let state = {
     },
     friends: {
         friendsName: [
-        {id: 1, name: 'Liza'},
-        {id: 2, name: "Kolia"},
-        {id: 3, name: "Pidor"},
+        {id: 1, name: 'Super', url: 'https://www.nationalgeographic.com/content/dam/animals/2018/09/comedy-wildlife-awards-photos/comedy-wildlife-awards-squirel-stop.ngsversion.1537203605960.adapt.1900.1.jpg'},
+        {id: 2, name: "Kolia", url: 'https://pbs.twimg.com/profile_images/1058201793753157633/SXcF2ilG_400x400.jpg'},
+        {id: 3, name: "Pidor", url: 'https://www.animaladdicts.net/wp-content/uploads/2016/08/Animal-world-is-by-far-the-funniest-world-Funny-animal-compilation-265x180.jpg'},
     ] },
 };
+
+export let newPost = () => {
+
+    let post = {
+        id: 4,
+        message: state.profilePage.newPostText,
+        likes: 2,
+    };
+    state.profilePage.posts.push(post);
+    state.profilePage.newPostText = '';
+    renderEnterTree(state);
+};
+
+export let addNewPostText = (newText) => {
+
+    state.profilePage.newPostText = newText;
+    renderEnterTree(state);
+};
+
 
 export default state;
