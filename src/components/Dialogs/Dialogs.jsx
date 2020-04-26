@@ -14,11 +14,10 @@ let Dialogs = (props) => {
 
     let newMessage = () => {
         let mes = sendMessage.current.value;
-        props.newMessage(mes);
+        props.dispatch({type: 'addNewMessageText', newText: mes});
     }
     let addMessage = () =>{
-        let mes = sendMessage.current.value;
-        props.addNewMessageText(mes);
+        props.dispatch({type: "newMessage"});
     };
 
     return (
@@ -29,8 +28,8 @@ let Dialogs = (props) => {
             <div className={m.messages}>
 
                 {messageElements}
-                <textarea ref={sendMessage} onChange={addMessage} value={props.dialogsPage.newMessages}/>
-                <button onClick={newMessage}>send</button>
+                <textarea ref={sendMessage} onChange={newMessage} value={props.dialogsPage.newMessages}/>
+                <button onClick={addMessage}>send</button>
             </div>
         </div>
     )

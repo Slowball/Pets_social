@@ -12,10 +12,7 @@ function renderEnterTree () {
         <BrowserRouter>
             <React.StrictMode>
                 <App store={store}
-                     newPost={store.newPost.bind(store)}
-                     addNewPostText={store.addNewPostText.bind(store)}
-                     addNewMessageText={store.addNewMessageText.bind(store)}
-                     newMessage={store.newMessage.bind(store)}/>}/>
+                     dispatch={store.dispatch.bind(store)}/>
             </React.StrictMode> </BrowserRouter>,
         document.getElementById('root')
     );

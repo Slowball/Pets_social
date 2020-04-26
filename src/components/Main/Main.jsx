@@ -11,9 +11,8 @@ function Main (props) {
 
         <div className={m.main}>
             <ProfileInfo/>
-            <MyPosts newPost={props.newPost}
-                     profilePage={props.profilePage}
-                     addNewPostText={props.addNewPostText}/>
+            <MyPosts dispatch={props.dispatch}
+                     profilePage={props.profilePage}/>
         </div>
 
     )

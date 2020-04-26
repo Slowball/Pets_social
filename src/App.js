@@ -21,12 +21,10 @@ function App(props) {
 
                 <Route path='/profile' render={() =>
                     <Main profilePage={props.store._state.profilePage}
-                          newPost={props.newPost}
-                          addNewPostText={props.addNewPostText}/>}/>
+                          dispatch={props.dispatch}/>}/>
                 <Route exact path='/messages' render={() =>
                     <Dialogs dialogsPage={props.store._state.dialogsPage}
-                             addNewMessageText={props.addNewMessageText}
-                             newMessage={props.newMessage}/>}/>
+                             dispatch={props.dispatch}/>}/>
                 <Route path='/news' render={() => <News news={props.store._state.news}/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/settings' render={() => <Settings settings={props.store._state.setting}/>}/>

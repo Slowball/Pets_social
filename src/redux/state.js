@@ -94,40 +94,40 @@ let store = {
     renderEnterTree() {
         console.log("fuck");
     },
-    newPost() {
 
-        let post = {
-            id: 4,
-            message: this._state.profilePage.newPostText,
-            likes: 2,
-        };
-        this._state.profilePage.posts.push(post);
-        this._state.profilePage.newPostText = '';
-        this.renderEnterTree(this._state);
-    },
-    addNewPostText(newText) {
-
-        this._state.profilePage.newPostText = newText;
-        store.renderEnterTree(this._state);
-    },
-    newMessage() {
-
-        let message = {
-            id: 4,
-            message: this._state.dialogsPage.newMessages,
-        };
-        this._state.dialogsPage.messages.push(message);
-        this._state.dialogsPage.newMessages = '';
-        store.renderEnterTree(this._state);
-    },
-    addNewMessageText(newText) {
-        this._state.dialogsPage.newMessages = newText;
-        store.renderEnterTree(this._state);
-    },
-    subscribe (observer) {
+    subscribe(observer) {
         store.renderEnterTree = observer;
     },
 
+    dispatch(action) {
+        if (action.type === "newPost") {
+
+            let post = {
+                id: 4,
+                message: this._state.profilePage.newPostText,
+                likes: 2,
+            };
+            this._state.profilePage.posts.push(post);
+            this._state.profilePage.newPostText = '';
+            this.renderEnterTree(this._state);
+
+        } else if (action.type === "addNewPostText") {
+
+            this._state.profilePage.newPostText = action.newText;
+            store.renderEnterTree(this._state);
+        } else if (action.type === "newMessage") {
+            let message = {
+                id: 4,
+                message: this._state.dialogsPage.newMessages,
+            };
+            this._state.dialogsPage.messages.push(message);
+            this._state.dialogsPage.newMessages = '';
+            store.renderEnterTree(this._state);
+        } else if (action.type === "addNewMessageText") {
+            this._state.dialogsPage.newMessages = action.newText;
+            store.renderEnterTree(this._state);
+        }
+    },
 };
 
 

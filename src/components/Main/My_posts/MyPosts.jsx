@@ -6,18 +6,17 @@ import m from './MyPosts.module.css';
 function MyPosts(props) {
 
     let postsElements = props.profilePage.posts
-        .map(posts => <Post message={posts.message} likes={posts.likes} /> );
+        .map(posts => <Post message={posts.message} likes={posts.likes}/>);
 
     let createElement = React.createRef();
 
     let addPost = () => {
-        let text = createElement.current.value;
-        props.newPost(text);
+        props.dispatch({type: "newPost"});
     };
 
     let onPostChange = () => {
         let text = createElement.current.value;
-        props.addNewPostText(text);
+        props.dispatch({type: "addNewPostText", newText: text});
     };
     return (
 
