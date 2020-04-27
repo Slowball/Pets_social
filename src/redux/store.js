@@ -3,7 +3,12 @@ import News from "../components/Main/News/News";
 import React from "react";
 import m from "../components/Menu/Menu.module.css";
 import {NavLink} from "react-router-dom";
-
+import dialogsPageReducer from "./dialogsPage_reducer";
+import friendsReducer from "./friends_reducer";
+import menuReducer from "./menu_reducer";
+import newsReducer from "./news_reducer";
+import profilePageReducer from "./profilePage_reducer";
+import settingReducer from "./setting_reducer";
 
 let store = {
     _state: {
@@ -100,33 +105,15 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === "newPost") {
+        this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+        this.friends = friendsReducer(this.friends, action);
+        this.menu = menuReducer(this.menu, action);
+        this.news = newsReducer(this.news,action);
+        this._state.profilePage = profilePageReducer( this._state.profilePage, action);
+        this.settings = settingReducer(this.settings,action);
 
-            let post = {
-                id: 4,
-                message: this._state.profilePage.newPostText,
-                likes: 2,
-            };
-            this._state.profilePage.posts.push(post);
-            this._state.profilePage.newPostText = '';
-            this.renderEnterTree(this._state);
+        store.renderEnterTree(this._state);
 
-        } else if (action.type === "addNewPostText") {
-
-            this._state.profilePage.newPostText = action.newText;
-            store.renderEnterTree(this._state);
-        } else if (action.type === "newMessage") {
-            let message = {
-                id: 4,
-                message: this._state.dialogsPage.newMessages,
-            };
-            this._state.dialogsPage.messages.push(message);
-            this._state.dialogsPage.newMessages = '';
-            store.renderEnterTree(this._state);
-        } else if (action.type === "addNewMessageText") {
-            this._state.dialogsPage.newMessages = action.newText;
-            store.renderEnterTree(this._state);
-        }
     },
 };
 
