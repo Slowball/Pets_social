@@ -1,8 +1,16 @@
 const newPost = "newPost";
 const addNewPostText = "addNewPostText";
 
+let initialState = {
+    posts: [
+        {id: 1, message: '"Why you here?', likes: '-1'},
+        {id: 1, message: 'Are you here?', likes: '-1'},
+        {id: 1, message: 'U kudding me? i kill u, fucking cat1', likes: '-1'},
+    ],
+    newPostText: '',
+};
 
-const profilePageReducer = (state, action) => {
+const profilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -12,13 +20,16 @@ const profilePageReducer = (state, action) => {
                 message: state.newPostText,
                 likes: 2,
             };
-            state.posts.push(post);
-            state.newPostText = '';
-            return state;
-
+            return {
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, post],
+            };
         case addNewPostText:
-            state.newPostText = action.newText;
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
 
         default:
             return state;
@@ -30,11 +41,11 @@ const profilePageReducer = (state, action) => {
 
 export let addPostActionCreator = () => {
 
-    return { type: newPost}
+    return {type: newPost}
 };
 export let onPostChangeActionCreator = (text) => {
 
-    return { type: addNewPostText, newText: text }
+    return {type: addNewPostText, newText: text}
 };
 
 export default profilePageReducer;

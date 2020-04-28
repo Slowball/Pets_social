@@ -1,11 +1,12 @@
 import React from 'react';
 import m from './Menu.module.css';
 import Friends from "./Friends/Friends";
+import {NavLink} from "react-router-dom";
 
 
 function Menu (props) {
 
-    let friend = props.menu.friends.friendsName
+    let friend = props.friends.friendsName
         .map(e => <Friends name={e.name} id={e.id} url={e.url}/>);
 
 
@@ -13,19 +14,19 @@ function Menu (props) {
 
         <nav className={m.nav}>
             <div>
-                {props.menu.menu.profile}
+                <NavLink to='/profile' activeClassName={m.active}>Profile</NavLink>
             </div>
             <div>
-                {props.menu.menu.messages}
+                <NavLink to='/messages' activeClassName={m.active}>Messages</NavLink>
             </div>
             <div>
-                {props.menu.menu.news}
+                <NavLink to='/news' activeClassName={m.active}>News</NavLink>,
             </div>
             <div>
-                {props.menu.menu.music}
+                <NavLink to='/music' activeClassName={m.active}>Music</NavLink>
             </div>
             <div>
-                {props.menu.menu.settings}
+                <NavLink to='/settings' activeClassName={m.active}>Settings</NavLink>
             </div>
             <p>friends</p>
             <div className={m.friend}>
@@ -39,4 +40,5 @@ function Menu (props) {
         
     )
 }
+
 export default Menu;
