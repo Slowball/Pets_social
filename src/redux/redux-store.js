@@ -4,6 +4,7 @@ import friendsReducer from "./friends_reducer";
 import newsReducer from "./news_reducer";
 import profilePageReducer from "./profilePage_reducer";
 import settingReducer from "./setting_reducer";
+import userReducer from "./users_reducer";
 
 let reducers = combineReducers( {
     dialogsPage: dialogsPageReducer,
@@ -11,6 +12,7 @@ let reducers = combineReducers( {
     news: newsReducer,
     profilePage: profilePageReducer,
     settings: settingReducer,
+    usersPage: userReducer,
     }
 
 );
