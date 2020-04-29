@@ -5,7 +5,7 @@ let initialState = {
     posts: [
         {id: 1, message: '"Why you here?', likes: '-1'},
         {id: 1, message: 'Are you here?', likes: '-1'},
-        {id: 1, message: 'U kudding me? i kill u, fucking cat1', likes: '-1'},
+        {id: 1, message: 'Why u don"t love me?', likes: '-1'},
     ],
     newPostText: '',
 };

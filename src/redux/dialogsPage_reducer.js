@@ -36,11 +36,11 @@ let initialState = {
     ],
 
     messages: [
-        {id: 1, message: 'good luck fuking bad ass'},
-        {id: 2, message: 'FUkerrad2122'},
+        {id: 1, message: 'How are you?'},
+        {id: 2, message: 'Hello my little friend'},
         {id: 3, message: 'u see this?'},
     ],
-    newMessages: 'tu pidor',
+    newMessages: 'Hello ',
 };
 
 const dialogsPageReducer = (state = initialState, action) => {
