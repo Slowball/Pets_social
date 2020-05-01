@@ -1,39 +1,24 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
+    disableFollow,
+    getUsers,
     setCurrentPage,
-    setIsFetching,
-    setTotalUserCount,
-    setUsers, toggleFollowingProcess,
-    unfollow
+    turnOnFollow,
+
 } from "../../redux/users_reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import {usersAPI} from "../../api/api";
 
 
 class UsersAPIComponent extends React.Component {
 
     componentDidMount = () => {
-
-        this.props.setIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.setIsFetching(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUserCount(data.totalCount);
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     };
 
     onPageChanged = (p) => {
-        this.props.setCurrentPage(p);
-        this.props.setIsFetching(true);
-        usersAPI.getUsers(p, this.props.pageSize)
-            .then(data => {
-                this.props.setIsFetching(false);
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(p, this.props.pageSize);
     };
 
 
@@ -45,8 +30,8 @@ class UsersAPIComponent extends React.Component {
                    currentPage={this.props.currentPage}
                    onPageChanged={this.onPageChanged}
                    users={this.props.users}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}
+                   follow={this.props.turnOnFollow}
+                   unfollow={this.props.disableFollow}
                    toggleFollowingProcess={this.props.toggleFollowingProcess}
                    toggleFollowing={this.props.toggleFollowing}
             />
@@ -67,12 +52,10 @@ let mapStateToProps = (state) => {
 
 
 const UsersContainer = connect(mapStateToProps, {
-    setUsers,
-    follow,
-    unfollow,
     setCurrentPage,
-    setTotalUserCount,
-    setIsFetching, toggleFollowingProcess
+    getUsers,
+    disableFollow,
+    turnOnFollow,
 })(UsersAPIComponent);
 
 export default UsersContainer;

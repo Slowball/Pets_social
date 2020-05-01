@@ -2,8 +2,7 @@ import React from "react";
 import m from './Users.module.css';
 import userPhoto from '../../asets/image/userPhoto.png'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {usersAPI} from "../../api/api";
+
 
 let Users = (props) => {
 
@@ -11,9 +10,7 @@ let Users = (props) => {
     let pages = [];
     for (let i = 1; i <= pageCounts; i++) {
         pages.push(i)
-    }
-    ;
-
+    };
     return <div className={m.m}>
         {pages.map(p => {
             return <span className={props.currentPage === p && m.selectedPage}
@@ -21,7 +18,6 @@ let Users = (props) => {
                              props.onPageChanged(p)
                          }}>{p}</span>
         })}
-
         {props.users.map(u => <div key={u.id}>
             <stan>
                 <div>
@@ -31,25 +27,11 @@ let Users = (props) => {
                 </div>
                 <div>
                     {u.followed ? <button disabled={props.toggleFollowing.some(id => id === u.id)} onClick={() => {
-
-                        props.toggleFollowingProcess(true, u.id);
-                        usersAPI.getUnfollow(u.id)
-                            .then(data => {
-                                if (data.resultCode === 0) {
-                                    props.unfollow(u.id)
-                                }
-                                props.toggleFollowingProcess(false, u.id);
-                            });
-                    }}>Unfollow</button> : <button disabled={props.toggleFollowing.some(id => id === u.id)} onClick={() => {
-                        props.toggleFollowingProcess(true, u.id);
-                        usersAPI.getFollow(u.id)
-                            .then(data => {
-                                if (data.resultCode === 0) {
-                                    props.follow(u.id)
-                                }
-                                props.toggleFollowingProcess(false, u.id);
-                            });
-                    }}>Follow</button>}
+                            props.unfollow(u.id)
+                        }}>Unfollow</button> :
+                        <button disabled={props.toggleFollowing.some(id => id === u.id)} onClick={() => {
+                            props.follow(u.id)
+                        }}>Follow</button>}
                 </div>
             </stan>
             <span>

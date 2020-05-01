@@ -33,3 +33,21 @@ export let usersAPI = {
     },
 
 };
+
+export let author = {
+    authorize() {
+       return  instance.get(`auth/me`)
+           .then(response => {
+               return response.data;
+           })
+    }
+};
+
+export let profileAPI = {
+    getProfile (userId) {
+       return instance.get(`profile/`+ userId)
+            .then(response => {
+                return response.data;
+            })
+    }
+}

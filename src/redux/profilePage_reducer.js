@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 const newPost = "newPost";
 const addNewPostText = "addNewPostText";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
@@ -54,6 +56,15 @@ export let addPostActionCreator = () => {
 export let onPostChangeActionCreator = (text) => {
 
     return {type: addNewPostText, newText: text}
+};
+
+export let getProfile = (userId) => {
+    return (dispach) => {
+        profileAPI.getProfile(userId)
+            .then(data => {
+                dispach(setUsersProfile(data));
+            });
+    }
 };
 
 export default profilePageReducer;

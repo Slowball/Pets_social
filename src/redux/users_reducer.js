@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+import React from "react";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -78,4 +80,44 @@ export let follow = (userID) => ({type: FOLLOW, userID});
 export let setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export let unfollow = (userID) => ({type: UNFOLLOW, userID});
 export let setUsers = (users) => ({type: SET_USERS, users});
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispach) => {
+        dispach(setIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispach(setIsFetching(false));
+                dispach(setUsers(data.items));
+                dispach(setTotalUserCount(data.totalCount));
+            });
+    }
+};
+
+export const disableFollow = (id) => {
+    return (dispach) => {
+        dispach(toggleFollowingProcess(true, id));
+        usersAPI.getUnfollow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispach(unfollow(id));
+                }
+                dispach(toggleFollowingProcess(false, id));
+            });
+    }
+};
+
+export const turnOnFollow = (id) => {
+    return (dispach) => {
+        dispach(toggleFollowingProcess(true, id));
+        usersAPI.getFollow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispach(follow(id));
+                }
+                dispach(toggleFollowingProcess(false, id));
+            });
+    }
+};
+
+
 export default userReducer;
