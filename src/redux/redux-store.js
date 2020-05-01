@@ -5,6 +5,7 @@ import newsReducer from "./news_reducer";
 import profilePageReducer from "./profilePage_reducer";
 import settingReducer from "./setting_reducer";
 import userReducer from "./users_reducer";
+import authReducer from "./auth_reducer";
 
 let reducers = combineReducers( {
     dialogsPage: dialogsPageReducer,
@@ -13,6 +14,7 @@ let reducers = combineReducers( {
     profilePage: profilePageReducer,
     settings: settingReducer,
     usersPage: userReducer,
+    auth: authReducer,
     }
 
 );

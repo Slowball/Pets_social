@@ -28,6 +28,9 @@ function Menu (props) {
             <div>
                 <NavLink to='/settings' activeClassName={m.active}>Settings</NavLink>
             </div>
+            <div>
+                <NavLink to='/users' activeClassName={m.active}>Users</NavLink>
+            </div>
             <p>friends</p>
             <div className={m.friend}>
 

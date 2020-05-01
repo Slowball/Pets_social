@@ -1,6 +1,6 @@
 const newPost = "newPost";
 const addNewPostText = "addNewPostText";
-
+const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 let initialState = {
     posts: [
         {id: 1, message: '"Why you here?', likes: '-1'},
@@ -8,6 +8,7 @@ let initialState = {
         {id: 1, message: 'Why u don"t love me?', likes: '-1'},
     ],
     newPostText: '',
+    profile: null,
 };
 
 const profilePageReducer = (state = initialState, action) => {
@@ -30,7 +31,10 @@ const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newText
             };
-
+        case SET_USERS_PROFILE:
+            return {
+                ...state, profile: action.profile
+            };
         default:
             return state;
 
@@ -38,6 +42,10 @@ const profilePageReducer = (state = initialState, action) => {
     }
 
 };
+
+export let setUsersProfile = (profile) => {
+    return {type: SET_USERS_PROFILE, profile}
+}
 
 export let addPostActionCreator = () => {
 

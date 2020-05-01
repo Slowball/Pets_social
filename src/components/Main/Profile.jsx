@@ -6,16 +6,15 @@ import MyPostsContainer from "./My_posts/MyPostsContainer";
 
 
 
-function Main (props) {
+function Profile (props) {
 
     return (
 
         <div className={m.main}>
-            <ProfileInfo/>
-            <MyPostsContainer dispatch={props.dispatch}
-                     profilePage={props.profilePage}/>
+            <ProfileInfo profile={props.profile}/>
+            <MyPostsContainer />
         </div>
 
     )
 }
-export default Main;
+export default Profile;
