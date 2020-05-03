@@ -6,7 +6,9 @@ import MyPostsContainer from "./My_posts/MyPostsContainer";
 
 
 
+
 function Profile (props) {
+
 
     return (
 

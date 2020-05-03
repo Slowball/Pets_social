@@ -1,7 +1,7 @@
 import React from 'react';
 import m from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
-
+import ProfileStatus from './ProfileStatus';
 function ProfileInfo(props) {
 
     if (!props.profile) {
@@ -11,12 +11,14 @@ function ProfileInfo(props) {
     return (
 
         <div>
-            <div>
-                <img className={m.img} src='https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/12/female-lion-on-ground.jpg' />
-            </div>
+            {/*<div>*/}
+            {/*    <img className={m.img} src='https://allthatsinteresting.com/wordpress/wp-content/uploads/2018/12/female-lion-on-ground.jpg' />*/}
+            {/*</div>*/}
+
             <div className={m.discriptionBlock}>
                 <img src={props.profile.photos.large} />
             </div>
+            <ProfileStatus status={'hello world'}/>
             <div>
                 <span>{props.profile.aboutMe}</span>
             </div>

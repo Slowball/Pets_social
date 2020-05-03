@@ -3,6 +3,8 @@ import m from './Dialogs.module.css';
 import DialogsItem from "./DialogItem/DialogsItem";
 import Messages from "./Messages/Messages";
 
+
+
 let Dialogs = (props) => {
     let dialogsElements = props.dialogsPage.dialogs
         .map( dialog => ( <DialogsItem name={dialog.name} id={dialog.id} url={dialog.url}/>));
@@ -33,5 +35,6 @@ let Dialogs = (props) => {
         </div>
     )
 }
+
 
 export default Dialogs;
