@@ -7,15 +7,17 @@ import settingReducer from "./setting_reducer";
 import userReducer from "./users_reducer";
 import authReducer from "./auth_reducer";
 import thunkMiddleware from 'redux-thunk'
+import {reducer as formReducer} from 'redux-form'
 
-let reducers = combineReducers( {
-    dialogsPage: dialogsPageReducer,
-    friends: friendsReducer,
-    news: newsReducer,
-    profilePage: profilePageReducer,
-    settings: settingReducer,
-    usersPage: userReducer,
-    auth: authReducer,
+let reducers = combineReducers({
+        dialogsPage: dialogsPageReducer,
+        friends: friendsReducer,
+        news: newsReducer,
+        profilePage: profilePageReducer,
+        settings: settingReducer,
+        usersPage: userReducer,
+        auth: authReducer,
+        form: formReducer
     }
 );
 

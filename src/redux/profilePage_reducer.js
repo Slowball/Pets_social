@@ -1,5 +1,5 @@
 import {profileAPI} from "../api/api";
-
+const SET_USER_STATUS = 'SET_USER_STATUS';
 const newPost = "newPost";
 const addNewPostText = "addNewPostText";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
@@ -37,6 +37,10 @@ const profilePageReducer = (state = initialState, action) => {
             return {
                 ...state, profile: action.profile
             };
+        case SET_USER_STATUS:
+            return {
+                ...state, status: action.status
+            };
         default:
             return state;
 
@@ -57,6 +61,7 @@ export let onPostChangeActionCreator = (text) => {
 
     return {type: addNewPostText, newText: text}
 };
+export let setStatus = (status) => ({type: SET_USER_STATUS, status})
 
 export let getProfile = (userId) => {
     return (dispach) => {
@@ -66,5 +71,27 @@ export let getProfile = (userId) => {
             });
     }
 };
+
+export let getStatus = (userId) => {
+    return (dispach) => {
+        profileAPI.getStatus(userId)
+            .then(date => {
+            dispach(setStatus(date));
+        });
+    }
+};
+
+export let updateStatus = (status) => {
+    return (dispach) => {
+        profileAPI.updateStatus(status)
+            .then(response => {
+                if(response.data.resultCode === 0) {
+                    dispach(setStatus(status))
+                }
+            })
+
+    }
+};
+
 
 export default profilePageReducer;

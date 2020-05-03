@@ -2,12 +2,11 @@ import React from 'react';
 import m from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from './ProfileStatus';
+import {updateStatus} from "../../../redux/profilePage_reducer";
 function ProfileInfo(props) {
-
     if (!props.profile) {
         return <Preloader />
     }
-
     return (
 
         <div>
@@ -18,7 +17,7 @@ function ProfileInfo(props) {
             <div className={m.discriptionBlock}>
                 <img src={props.profile.photos.large} />
             </div>
-            <ProfileStatus status={'hello world'}/>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             <div>
                 <span>{props.profile.aboutMe}</span>
             </div>
