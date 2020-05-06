@@ -1,5 +1,4 @@
-const addNewMessageText = 'addNewMessageText';
-const newMessage = "newMessage";
+const SET_NEW_MESSAGE = "SET_NEW_MESSAGE";
 
 let initialState = {
     dialogs: [
@@ -40,41 +39,22 @@ let initialState = {
         {id: 2, message: 'Hello my little friend'},
         {id: 3, message: 'u see this?'},
     ],
-    newMessages: 'Hello ',
 };
 
 const dialogsPageReducer = (state = initialState, action) => {
 
     switch (action.type) {
-
-        case newMessage: {
-            let body = state.newMessages;
+        case SET_NEW_MESSAGE: {
+            let body = action.newMessageBody;
             return {
                 ...state,
-                newMessages: '',
                 messages: [...state.messages, {id: 6, message: body}]
             };
-
-        }
-        case addNewMessageText: {
-            return {
-                ...state,
-                newMessages: action.newText
-            };
-
         }
         default:
             return state;
     }
 };
 
-export let newMessageActionCreator = (text) => {
-
-    return {type: addNewMessageText, newText: text};
-};
-
-export let addMessageActionCreator = () => {
-
-    return {type: newMessage};
-};
+export let addMessageActionCreator = (newMessageBody) => {return {type: SET_NEW_MESSAGE, newMessageBody}};
 export default dialogsPageReducer;

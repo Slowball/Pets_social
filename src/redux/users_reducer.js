@@ -82,39 +82,39 @@ export let unfollow = (userID) => ({type: UNFOLLOW, userID});
 export let setUsers = (users) => ({type: SET_USERS, users});
 
 export const getUsers = (currentPage, pageSize) => {
-    return (dispach) => {
-        dispach(setIsFetching(true));
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
-                dispach(setIsFetching(false));
-                dispach(setUsers(data.items));
-                dispach(setTotalUserCount(data.totalCount));
+                dispatch(setIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setTotalUserCount(data.totalCount));
             });
     }
 };
 
 export const disableFollow = (id) => {
-    return (dispach) => {
-        dispach(toggleFollowingProcess(true, id));
+    return (dispatch) => {
+        dispatch(toggleFollowingProcess(true, id));
         usersAPI.getUnfollow(id)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispach(unfollow(id));
+                    dispatch(unfollow(id));
                 }
-                dispach(toggleFollowingProcess(false, id));
+                dispatch(toggleFollowingProcess(false, id));
             });
     }
 };
 
 export const turnOnFollow = (id) => {
-    return (dispach) => {
-        dispach(toggleFollowingProcess(true, id));
+    return (dispatch) => {
+        dispatch(toggleFollowingProcess(true, id));
         usersAPI.getFollow(id)
             .then(data => {
                 if (data.resultCode === 0) {
-                    dispach(follow(id));
+                    dispatch(follow(id));
                 }
-                dispach(toggleFollowingProcess(false, id));
+                dispatch(toggleFollowingProcess(false, id));
             });
     }
 };

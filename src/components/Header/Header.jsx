@@ -7,7 +7,7 @@ function Header(props) {
         <header className={h.header}>
             <img className={h.img} src={'https://avatanplus.com/files/resources/mid/5ad884519fa7b162ddc4def6.png'}/>
             <div className={h.authBlock}>
-                {props.isAuth ? props.login : <NavLink to='/login'>Login</NavLink>}
+                {props.isAuth ? <div>{props.login} - <button onClick={props.logout}>Log Out</button></div> : <NavLink to='/login'>Login</NavLink>}
             </div>
         </header>
     )

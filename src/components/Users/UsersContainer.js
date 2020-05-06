@@ -11,6 +11,13 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../HOC/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getIsFetching,
+    getPageSize,
+    getToggleFollowing,
+    getTotalUsersCount, getUser
+} from "../../redux/users_selectors";
 
 
 class UsersAPIComponent extends React.Component {
@@ -41,14 +48,25 @@ class UsersAPIComponent extends React.Component {
     }
 };
 
+// let mapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         toggleFollowing: state.usersPage.toggleFollowing,
+//     }
+// };
+
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        toggleFollowing: state.usersPage.toggleFollowing,
+        users: getUser(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        toggleFollowing: getToggleFollowing(state),
     }
 };
 
